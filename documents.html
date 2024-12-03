@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="./img/logo2.jpg" type="image/x-icon">
 </head>
 <body>
-
+    <!-- JAK JEST OTWARTE TO MA ZNIKAC -->
     <a href="" class="access">
         <i class="fas fa-universal-access"></i>
     </a>
@@ -17,9 +17,18 @@
     <nav class="navbar">
         <a href="#" class="navbar-logo"><img src="./img/logo2.jpg" alt=""></a>
         <ul class="navbar-links">
-            <li><a href="index.html">O nas</a></li>
-            <li><a href="#">Dokumenty do pobrania</a></li>
-            <li><a href="contact.html">Kontakt</a></li>
+            <li class="nav-item"><a href="#">O nas &nbsp;<i class="fa-solid fa-arrow-down"></i></a>
+                <ul class="dropdown">
+                    <li><a href="#">Pracownia kulinarna</a></li>
+                    <li><a href="#">Pracownia informatyczna</a></li>
+                    <li><a href="#">Pracownia ogrodnicza</a></li>
+                    <li><a href="#">Pracownia zabawkarska (rękodzieła)</a></li>
+                    <li><a href="#">Pracownia ceramiczna</a></li>
+                    <li><a href="#">Pracownia malarska</a></li>
+                </ul>
+            </li>
+            <li><a href="#documents">Dokumenty do pobrania</a></li>
+            <li><a href="#contact">Kontakt</a></li>
         </ul>
         <div class="hamburger">
             <span></span>
@@ -27,12 +36,23 @@
             <span></span>
         </div>
         <ul class="navbar-links-mobile">
-            <li><a href="index.html">O nas</a></li>
-            <li><a href="#">Dokumenty do pobrania</a></li>
-            <li><a href="contact.html">Kontakt</a></li>
+            <li><a href="#">O nas</a></li>
+            <li><a href="#documents">Dokumenty do pobrania</a></li>
+            <li><a href="#contact">Kontakt</a></li>
         </ul>
     </nav>
+    <section style="height: 100vh;">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum debitis totam, nesciunt blanditiis laudantium modi, repellendus accusantium harum nam mollitia quasi illo. Nisi nulla earum nihil in quisquam dolorem commodi! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit, earum at accusamus molestias ullam iusto dolor, voluptates accusantium exercitationem autem ea porro eius possimus blanditiis quas et beatae facere. Alias. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio amet expedita nesciunt facere nam ipsum cupiditate, eligendi sapiente, at architecto repellendus excepturi reprehenderit necessitatibus est, tempore placeat quae! Reprehenderit, architecto!
+        Asperiores ipsam commodi laboriosam molestiae maiores officia perspiciatis nulla non, voluptas, est ea distinctio eligendi aperiam dolore ut incidunt odit libero dicta error. Perferendis neque quaerat aperiam corrupti? Numquam, laudantium?
+        Ad ipsa, magnam consequuntur facere rerum deleniti ducimus ex dolore, culpa sunt quos consequatur aliquam alias velit non. Similique, tempore. Accusamus illum animi veniam facilis vitae, voluptates distinctio eius illo?
+        Sunt aperiam officiis animi modi tenetur enim harum? Officia commodi voluptas doloribus sapiente, fugiat cupiditate quos magni hic corporis? Recusandae necessitatibus tempora ex laborum quo culpa, ipsum consequuntur perferendis minima.
+        Magnam animi, sapiente id, saepe quia nam veritatis reprehenderit maxime perspiciatis minus atque et nemo ea officiis delectus quos hic! Laudantium, natus. Nostrum quisquam animi ea, possimus voluptatem cum? Veniam.</p>
+    </section>
+    <main>
+        
+    </main>
 
+    
     <div class="access-menu">
         <div class="close-access"><i class="fas fa-times"></i></div>
 
@@ -76,6 +96,11 @@
             <div class="access-block">
                 <div class="icon"><i class="far fa-images"></i></div>
                 <div class="title">Ukryj Obrazy</div>
+            </div>
+
+            <div class="reset">
+                <i class="fas fa-redo"></i>
+                <a href="" title="" class="zresetuj">Zresetuj</a>
             </div>
         </div>
     </div>

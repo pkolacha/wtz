@@ -15,7 +15,6 @@
     /* kontrast */
     --bg-reverse-color: #4f4444;
     --text-reverse-color: #fff2f1;
-    --image-reverse: invert(100%);
 
     --bg-dark-color: #000;
     --text-dark-color: #49ba91;
@@ -33,9 +32,9 @@
     --letter-spacing: 4px;
 
     /* odstęp linijek */
-    --line-height-medium: 150%;
-    --line-height-big: 175%;
-    --line-height-biggest: 200%;
+    --line-height-normal: 150%;
+    --line-height-medium: 175%;
+    --line-height-big: 200%;
 
     /* ustawienie tekstu */
     --text-normal: justify;
@@ -64,13 +63,80 @@
     }
   }
 
+/* kontrast */
+.default-contrast {
+    background-color: var(--body-color); /* Białe tło */
+    color: var(--text-color); /* Czarny tekst */
+}
+
+.low-contrast {
+    background-color: var(--bg-reverse-color); /* Jasnoszare tło */
+    color: var(--text-reverse-color); /* Ciemnoszary tekst */
+}
+
+.high-contrast {
+    background-color: var(--bg-dark-color); /* Czarne tło */
+    color: var(--text-dark-color); /* Biały tekst */
+}
+
+img {
+    transition: filter 0.5s ease;
+}
+
+.low-contrast img {
+    filter: brightness(1.2); /* Jaśniejsze obrazy */
+}
+
+.high-contrast img {
+    filter: contrast(2) brightness(0.8); /* Bardzo wyraziste obrazy */
+}
+
+/* linki */
+.highlight {
+    color: red;
+    text-decoration: underline var(--nav-dark-text-color) 3px;
+    border-radius: 4px;
+}
+
+/* czcionka */
+.default-size {
+    font-size: var(--normal-font-size);
+}
+
+.big-size {
+    font-size: var(--big-font-size);
+}
+
+.bigger-size {
+    font-size: var(--bigger-font-size);
+}
+
+
+
+
 body{
     background-color: var(--body-color);
+    text-align: justify;
+    line-height: var(--line-height-normal);
 }
 
 img{
     filter: none;
 }
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: background-color .3s ease, color .3s ease;
+}
+
+p{
+    font-size: var(--normal-font-size);
+}
+
+h1, h2, h3, p, div, span{
+    transition: all .3s ease;
+  }
 
 .navbar {
     display: flex;
@@ -115,6 +181,7 @@ img{
 
 .navbar-links a:hover {
     background-color: #555;
+    color: var(--body-color);
 }
 
 .hamburger {
@@ -176,6 +243,48 @@ img{
 
 .hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translate(10px, -10px);
+}
+
+.nav-item i{
+    font-size: 90%;
+}
+/* Dropdown dla dużych ekranów */
+.dropdown {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: calc(100% - 20px); 
+    /* left: 50%; Centrowanie względem elementu rodzica */
+    /* transform: translateX(-50%); Dopasowanie do środka */
+    background-color: #444;
+    display: none; /* Domyślnie ukryte */
+    z-index: 1000;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown li a {
+    display: flex;
+    padding: 10px 20px;
+    white-space: nowrap;
+    color: white;
+    text-decoration: none;
+    font-size: var(--normal-font-size);
+}
+
+.dropdown li a:hover {
+    background-color: var(--text-color);
+}
+
+/* Pokaż dropdown przy najechaniu */
+.nav-item:hover .dropdown {
+    display: block;
+}
+
+/* Pokaż dropdown przy najechaniu */
+.nav-item:hover .dropdown {
+    display: block;
 }
 
 .access{
@@ -263,7 +372,7 @@ img{
     top: 50%;
     right: 0%;
     transform: translate(0%, -50%);
-    display: none;
+    display: block;
 }
 
 .close-access{
