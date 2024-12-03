@@ -262,7 +262,8 @@ img{
     border-radius: 20px 0 0 20px;
     top: 50%;
     right: 0%;
-    transform: translate(0%, -50%)
+    transform: translate(0%, -50%);
+    display: none;
 }
 
 .close-access{

@@ -1,5 +1,5 @@
 const hamburger = document.querySelector('.hamburger');
-const Sticky = document.querySelector('.navbar');
+const navbar = document.querySelector('.navbar');
 const mobileLinks = document.querySelectorAll('.navbar-links-mobile a');
 
 hamburger.addEventListener('click', () => {
