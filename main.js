@@ -1,3 +1,14 @@
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//STRZAŁKI W SLIDERZE NIE DZIAŁAJĄ
+// ZMIANA IKONEK W ZMIANIE ROZMIARU LITER W HTML SA, NASYCENIE W CSS W ROOT SIE ZNAJDUJA WLASCIWOSCI, SLIDER, UKRYWANIE OBRAZKOW
+//SPRAWDZ CSS. WYSZUKAJ SE KONTRAST I TAM SA TYTUL KOLORU DO ZMIAN I SECONDARY BG I KOLOR TEKSTU DLA LOW KONTRAST
+//TRZEBA DODAC POWIEKSZANIE TEKSTU DLA LISTY MA BYC 1.3EM 1.6EM I 1.9EM DLA NAGLOWKOW ORAZ KLASY SUBTITLE A DLA LISTY NORMALNIE 1.2EM 1.5EM 1.8EM
+//W ZMIANIE ROZMIARU TEKSTU 2 RAZY PLUS POTEM RAZ MINUS I ZNOWU 2 RAZY PLUS : <i class="fas fa-minus"></i> . CZAISZE ZE JAK JEST JESZCZE OPCJA DO ZWIEKSZENIA TO PLUS A JAK MOZNA TYLKO ZMINNEJSZYC TO MINUS
+//POWIEKSZANIE TEKSTU NIE POWIEKSZA TEKSTU W NAVBARZE I PRACOWNI
+
+//JAK MASZ JAKIES PYTANIA TO SMIALO ;)
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 const hamburger = document.querySelector(".hamburger");
 const navbar = document.querySelector(".navbar");
 const mobileLinks = document.querySelectorAll(".navbar-links-mobile a");
@@ -61,14 +72,14 @@ const toggler = document.getElementById("contrast-toggler");
 const contrastModes = ["default-contrast", "low-contrast", "high-contrast"];
 let currentContrastIndex = 0;
 
-window.addEventListener("load", () => {
-  const savedContrast = localStorage.getItem("contrastMode");
-  if (savedContrast) {
-    currentContrastIndex = contrastModes.indexOf(savedContrast);
-    if (currentContrastIndex === -1) currentContrastIndex = 0;
-    applyContrastMode(contrastModes[currentContrastIndex]);
-  }
-});
+// window.addEventListener("load", () => {
+//   const savedContrast = localStorage.getItem("contrastMode");
+//   if (savedContrast) {
+//     currentContrastIndex = contrastModes.indexOf(savedContrast);
+//     if (currentContrastIndex === -1) currentContrastIndex = 0;
+//     applyContrastMode(contrastModes[currentContrastIndex]);
+//   }
+// });
 
 const applyContrastMode = (mode) => {
   contrastModes.forEach((m) => body.classList.remove(m));
@@ -103,7 +114,6 @@ toggleButton.addEventListener("click", () => {
     : "Podświetlanie linków";
 });
 
-//czcionka NIE DZIALA!!!!!!!!!!!!!!!!!!!! jak usune all to dziala tylko 1 p a jak jest all to wcale
 const sizeToggler = document.getElementById("fontSizeToggler");
 const textElement = document.querySelectorAll("p");
 const iconSize = document.querySelector(".icon-size");
@@ -111,19 +121,18 @@ const iconSize = document.querySelector(".icon-size");
 const fontSizes = ["1.2em", "1.5em", "1.8em"];
 let currentFontSizeIndex = 0;
 
-const savedFontSizeIndex = localStorage.getItem("fontSizeIndex");
+// const savedFontSizeIndex = localStorage.getItem("fontSizeIndex");
 
-if (savedFontSizeIndex !== null) {
-  currentFontSizeIndex = parseInt(savedFontSizeIndex, 10);
-  textElement.forEach((paragraph) => {
-    paragraph.style.fontSize = fontSizes[currentFontSizeIndex]; // tu to samo co na dole
-  });
-}
+// if (savedFontSizeIndex !== null) {
+//   currentFontSizeIndex = parseInt(savedFontSizeIndex, 10);
+//   textElement.forEach((paragraph) => {
+//     paragraph.style.fontSize = fontSizes[currentFontSizeIndex];
+//   });
+// }
 
 sizeToggler.addEventListener("click", () => {
   currentFontSizeIndex = (currentFontSizeIndex + 1) % fontSizes.length;
   textElement.forEach((paragraph) => {
-    // !!!! dzialalo tylko dla 1, ponieważ querySelectorAll to OBJEKT wszystkimi paragrafami nie tylko z jednym ,wiec musisz dodac petle ktora bedzie dawac kazdemu paragrafowi nowy rozmiar :)))
     paragraph.style.fontSize = fontSizes[currentFontSizeIndex];
   });
   localStorage.setItem("fontSizeIndex", currentFontSizeIndex);
@@ -131,8 +140,6 @@ sizeToggler.addEventListener("click", () => {
   // IKONKA DO PODMIANKI !!!!!!!!!!!!!!!
 });
 
-//Odstepy NIE DZIAŁA !!!!!! CHUJ WIE CZEMU
-// ??????? mi dziala na chromie ????????
 let currentOption = 0;
 
 function toggleSpacing() {
@@ -165,7 +172,7 @@ function toggleAlignment() {
   const bodyElement = document.body;
   const iconAlign = document.querySelector(".icon-align");
 
-  currentAlignment = (currentAlignment + 1) % 4; // dlaczego tam bylo 5 a nie 4 po prostu? Zmienna nie byla globalna tylko lokalna i przybierala ciagle 0
+  currentAlignment = (currentAlignment + 1) % 4; 
 
   switch (currentAlignment) {
     case 0:
@@ -189,8 +196,6 @@ function toggleAlignment() {
   }
 }
 
-//line height !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TEZ NIE DZIALA
-// ???? u mnie dziala na chromie ????
 let currentLineHeight = 0;
 
 function toggleLineHeight() {
@@ -213,13 +218,6 @@ function toggleLineHeight() {
   }
 }
 
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//
-//DOBRA, WIECEJ NIE ROBIE BO SIE OKAZE ZE INACZEJ TO BEDZIESZ ROBIC I CI ROBOTY DODALEM BY SPRAWDZIC TO I USUWAC. WIESZ CO MASZ ROBIC
-// WSZEDZIE MASZ INSTRUKCJE
-// KC <333
-
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 const slides = document.querySelector(".slides");
 const slideCount = 2;
@@ -242,7 +240,7 @@ function prevSlide() {
 }
 
 function updateSlidePosition() {
-  slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+  slides.style.transform = `translateX(-${currentIndex * 50}%)`;
 }
 
 arrowLeft.addEventListener("click", () => {
@@ -253,4 +251,25 @@ arrowLeft.addEventListener("click", () => {
 arrowRight.addEventListener("click", () => {
   clearInterval(slideInterval);
   nextSlide();
+});
+
+
+
+const rodoLink = document.getElementById("rodo-link");
+const rodoModal = document.getElementById("rodo-modal");
+const closeRodoModal = document.getElementById("close-rodo-modal");
+
+rodoLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    rodoModal.classList.add("active");
+});
+
+closeRodoModal.addEventListener("click", () => {
+    rodoModal.classList.remove("active");
+});
+
+rodoModal.addEventListener("click", (e) => {
+    if (e.target === rodoModal) {
+        rodoModal.classList.remove("active");
+    }
 });
