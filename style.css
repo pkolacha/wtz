@@ -254,7 +254,7 @@ img{
     top: 0;
     right: 0;
     width: 350px;
-    height: 76vh;
+    height: 92vh;
     background-color: var(--accessibility-primary);
     z-index: 1000;
     transition: left 0.3s ease;
@@ -262,7 +262,7 @@ img{
     border-radius: 20px 0 0 20px;
     top: 50%;
     right: 0%;
-    transform: translate(0%, -55%)
+    transform: translate(0%, -50%)
 }
 
 .close-access{
@@ -277,7 +277,7 @@ img{
     display: flex;
     flex-wrap: wrap;
     padding: 20px;
-    margin-top: 3rem;
+    margin-top: 1.2rem;
     justify-content: center;
     align-content: center;
 }
@@ -372,10 +372,9 @@ img{
         height: 91svh;
     }
     .access-menu{
-        height: 78svh;
+        height: 90svh;
     }
     .options{
-        margin-top: 2rem;
+        /* margin-top: 2rem; */
     }
 }
-
