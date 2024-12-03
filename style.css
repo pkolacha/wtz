@@ -354,7 +354,7 @@ h1, h2, h3, p, div, span{
     font-size: 2rem;
     padding: 10px;
     cursor: pointer;
-    z-index: 10;
+    z-index: 1000;
     border-radius: 50%;
 }
 
