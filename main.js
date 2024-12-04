@@ -1,6 +1,6 @@
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//STRZAŁKI W SLIDERZE NIE DZIAŁAJĄ
-//NASYCENIE ZROB, W CSS W ROOT SIE ZNAJDUJA WLASCIWOSCI; UKRYWANIE OBRAZKOW ZROB
+//STRZAŁKI W SLIDERZE NIE DZIAŁAJĄ (problem z frontem, najpewniej przez budowe strony, wywolywane przez queryselector wszystko dziala)
+//NASYCENIE ZROB, W CSS W ROOT SIE ZNAJDUJA WLASCIWOSCI; UKRYWANIE OBRAZKOW ZROB (zrobione, tylko dodac aby ten div tak nie przeskakiwaol)
 //SPRAWDZ CSS. WYSZUKAJ SE KONTRAST I TAM SA TYTUL KOLORU DO ZMIAN I SECONDARY BG I KOLOR TEKSTU DLA LOW KONTRAST
 //TRZEBA DODAC POWIEKSZANIE TEKSTU DLA LISTY MA BYC 1.3EM 1.6EM I 1.9EM DLA NAGLOWKOW ORAZ KLASY SUBTITLE A DLA LISTY NORMALNIE 1.2EM 1.5EM 1.8EM
 //W ZMIANIE ROZMIARU TEKSTU 2 RAZY PLUS POTEM RAZ MINUS I ZNOWU 2 RAZY PLUS : <i class="fas fa-minus"></i> . CZAISZE ZE JAK JEST JESZCZE OPCJA DO ZWIEKSZENIA TO PLUS A JAK MOZNA TYLKO ZMINNEJSZYC TO MINUS
@@ -11,6 +11,20 @@
 
 //JAK MASZ JAKIES PYTANIA TO SMIALO ;)
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+let currentSaturation = 100; // Początkowe nasycenie w procentach
+
+document.querySelector("body > section.access-menu > div.options > div:nth-child(7)").addEventListener("click", () => {
+  currentSaturation += 20;
+  if (currentSaturation > 200) {
+    currentSaturation = 100;
+  }
+  document.body.style.filter = `saturate(${currentSaturation}%)`;
+  document.querySelector("body > section.access-menu > div.options > div:nth-child(7) > div.icon > i").innerText = `${currentSaturation}%`;
+});
+
+
+
 
 const hamburger = document.querySelector(".hamburger");
 const navbar = document.querySelector(".navbar");
@@ -122,25 +136,29 @@ const textElement = document.querySelectorAll("p");
 const iconSize = document.querySelector(".icon-size");
 
 const fontSizes = ["1.2em", "1.5em", "1.8em"];
+const listSizes = ["1.3em", "1.6em", "1.9em"];
 let currentFontSizeIndex = 0;
-
-// const savedFontSizeIndex = localStorage.getItem("fontSizeIndex");
-
-// if (savedFontSizeIndex !== null) {
-//   currentFontSizeIndex = parseInt(savedFontSizeIndex, 10);
-//   textElement.forEach((paragraph) => {
-//     paragraph.style.fontSize = fontSizes[currentFontSizeIndex];
-//   });
-// }
+let currentListSizeIndex = 0;
 
 sizeToggler.addEventListener("click", () => {
   currentFontSizeIndex = (currentFontSizeIndex + 1) % fontSizes.length;
+  currentListSizeIndex = (currentListSizeIndex + 1) % listSizes.length;
+
   textElement.forEach((paragraph) => {
     paragraph.style.fontSize = fontSizes[currentFontSizeIndex];
   });
-  localStorage.setItem("fontSizeIndex", currentFontSizeIndex);
 
-  // IKONKA DO PODMIANKI !!!!!!!!!!!!!!!
+  document.querySelectorAll("li").forEach((li) => {
+    li.style.fontSize = listSizes[currentListSizeIndex];
+  });
+
+  document.querySelectorAll("h1, h2, h3, h4, h5, h6").forEach((header) => {
+    header.style.fontSize = listSizes[currentListSizeIndex];
+  });
+
+  document.querySelectorAll(".subtitle").forEach((subtitle) => {
+    subtitle.style.fontSize = listSizes[currentListSizeIndex];
+  });
 });
 
 let currentOption = 0;
@@ -234,6 +252,7 @@ let slideInterval = setInterval(() => {
 
 function nextSlide() {
   currentIndex = (currentIndex + 1) % slideCount;
+  console.log(`currentIndex: ${currentIndex}`);
   updateSlidePosition();
 }
 
