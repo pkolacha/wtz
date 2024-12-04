@@ -499,7 +499,6 @@ h1, h2, h3, p, div, span{
 }
 
 .pracownie {
-    background-color: var(--body-color);
     padding: 2rem 1rem;
     margin-bottom: 2rem;
   }
@@ -512,7 +511,7 @@ h1, h2, h3, p, div, span{
 }
   
 .pracownia {
-    background: var(--body-color);
+    /* background: var(--body-color); */
     border: 1px solid var(--bg-secondary-color);
     border-radius: 10px;
     overflow: hidden;
@@ -528,7 +527,6 @@ h1, h2, h3, p, div, span{
   
 .pracownia h3 {
     padding: 1rem;
-    color: var(--text-color);
 }
   
 .pracownia:hover {
