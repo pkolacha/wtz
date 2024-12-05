@@ -17,31 +17,30 @@
 
 window.onload = () => {
   changeSaturation();
-}
-
-
+};
 // zmiania saturation =========
-
 
 let currentSaturation = localStorage.getItem("saturation") || 100;
 
-document.querySelector("#saturation:nth-child(7)").addEventListener("click", () => {
-
-  currentSaturation += 20;
-  changeSaturation();
-});
+document
+  .querySelector("#saturation:nth-child(7)")
+  .addEventListener("click", () => {
+    currentSaturation += 20;
+    changeSaturation();
+  });
 
 const changeSaturation = () => {
   if (currentSaturation > 200) {
     currentSaturation = 100;
   }
   document.documentElement.style.filter = `saturate(${currentSaturation}%)`;
-  document.querySelector("#saturation:nth-child(7) > div.icon > i").innerText = `${currentSaturation}%`;
+  document.querySelector(
+    "#saturation:nth-child(7) > div.icon > i"
+  ).innerText = `${currentSaturation}%`;
   localStorage.setItem("saturation", currentSaturation);
 };
 
 // ============
-
 
 const hamburger = document.querySelector(".hamburger");
 const navbar = document.querySelector(".navbar");
@@ -104,24 +103,43 @@ const body = document.body;
 const toggler = document.getElementById("contrast-toggler");
 
 const contrastModes = ["default-contrast", "low-contrast", "high-contrast"];
+const colors = {
+  "default-contrast": {
+    bg: "var(--body-color)",
+    title: "var(--text-color)",
+  },
+  "low-contrast": {
+    bg: "var(--bg-reverse-color)",
+    title: "var(--text-reverse-color)",
+  },
+  "high-contrast": {
+    bg: "var(--bg-dark-color)",
+    title: "var(--text-dark-color)",
+  },
+};
 let currentContrastIndex = 0;
 
-// window.addEventListener("load", () => {
-//   const savedContrast = localStorage.getItem("contrastMode");
-//   if (savedContrast) {
-//     currentContrastIndex = contrastModes.indexOf(savedContrast);
-//     if (currentContrastIndex === -1) currentContrastIndex = 0;
-//     applyContrastMode(contrastModes[currentContrastIndex]);
-//   }
-// });
 
 const applyContrastMode = (mode) => {
   contrastModes.forEach((m) => body.classList.remove(m));
   body.classList.add(mode);
+
   document.querySelectorAll(".pracownia > h3").forEach((elements) => {
     elements.classList = mode;
   });
-  
+
+  const nav = document.querySelector("body > nav");
+  nav.style.backgroundColor = colors[mode].bg;
+  nav.querySelectorAll("*").forEach((element) => {
+    element.style.color = colors[mode].title;
+  });
+
+  const footer = document.querySelector("body > footer");
+  footer.style.backgroundColor = colors[mode].title;
+  footer.querySelectorAll("*").forEach((element) => {
+    element.style.color = colors[mode].bg;
+  });
+
   localStorage.setItem("contrastMode", mode);
 };
 
@@ -152,36 +170,36 @@ toggleButton.addEventListener("click", () => {
     : "Podświetlanie linków";
 });
 
-
-const imageButton = document.getElementById("hideImage")
+const imageButton = document.getElementById("hideImage");
 let imagesHidden = false;
 
-imageButton.addEventListener('click', () => {
-const Allimages = document.querySelectorAll('img:not(.slide img):not(.img-container img)');
-const toggleText = document.querySelector('#hideImage .title');
+imageButton.addEventListener("click", () => {
+  const Allimages = document.querySelectorAll(
+    "img:not(.slide img):not(.img-container img)"
+  );
+  const toggleText = document.querySelector("#hideImage .title");
 
   if (imagesHidden) {
-      Allimages.forEach(img => {
-          img.style.display = 'block';
-      });
-      toggleText.textContent = 'Ukryj Obrazy';
+    Allimages.forEach((img) => {
+      img.style.display = "block";
+    });
+    toggleText.textContent = "Ukryj Obrazy";
   } else {
-      Allimages.forEach(img => {
-          img.style.display = 'none';
-      });
+    Allimages.forEach((img) => {
+      img.style.display = "none";
+    });
 
-      toggleText.textContent = 'Pokaż Obrazy';
-      const sectionTitles = document.querySelectorAll('.section-title');
-      if (sectionTitles.length >= 4) {
-        sectionTitles[3].style.display = 'none';
-      } else {
-        console.log('Nie znaleziono elemntu tytułowego');
-      }
+    toggleText.textContent = "Pokaż Obrazy";
+    const sectionTitles = document.querySelectorAll(".section-title");
+    if (sectionTitles.length >= 4) {
+      sectionTitles[3].style.display = "none";
+    } else {
+      console.log("Nie znaleziono elemntu tytułowego");
+    }
   }
 
   imagesHidden = !imagesHidden;
 });
-
 
 const sizeToggler = document.getElementById("fontSizeToggler");
 const textElement = document.querySelectorAll("p");
@@ -196,7 +214,9 @@ sizeToggler.addEventListener("click", () => {
   currentFontSizeIndex = (currentFontSizeIndex + 1) % fontSizes.length;
   currentListSizeIndex = (currentListSizeIndex + 1) % listSizes.length;
 
-  (currentFontSizeIndex) % 3 === 2 ? iconSize.innerHTML = '<i class="fas fa-minus"></i>' : iconSize.innerHTML = '<i class="fas fa-plus"></i>';
+  currentFontSizeIndex % 3 === 2
+    ? (iconSize.innerHTML = '<i class="fas fa-minus"></i>')
+    : (iconSize.innerHTML = '<i class="fas fa-plus"></i>');
 
   textElement.forEach((paragraph) => {
     paragraph.style.fontSize = fontSizes[currentFontSizeIndex];
@@ -239,15 +259,13 @@ function toggleSpacing() {
   }
 }
 
-
 let currentAlignment = 0;
-
 
 function toggleAlignment() {
   const bodyElement = document.body;
   const iconAlign = document.querySelector(".icon-align");
 
-  currentAlignment = (currentAlignment + 1) % 4; 
+  currentAlignment = (currentAlignment + 1) % 4;
 
   switch (currentAlignment) {
     case 0:
@@ -293,7 +311,6 @@ function toggleLineHeight() {
   }
 }
 
-
 const slides = document.querySelector(".slides");
 const slideCount = 2;
 const arrowLeft = document.querySelector(".arrow-left");
@@ -328,20 +345,16 @@ arrowRight.addEventListener("click", () => {
   nextSlide();
 });
 
+const images = document.querySelectorAll(".gallery img");
+const modal = document.getElementById("imageModal");
+const modalImg = document.getElementById("modalImage");
+const caption = document.getElementById("caption");
+const close = document.querySelector(".close");
 
-
-
-
-const images = document.querySelectorAll('.gallery img');
-const modal = document.getElementById('imageModal');
-const modalImg = document.getElementById('modalImage');
-const caption = document.getElementById('caption');
-const close = document.querySelector('.close');
-
-images.forEach(image => {
-    image.addEventListener('click', () => {
-        modal.style.display = 'flex';
-        modalImg.src = image.src;
-        // caption.textContent = image.alt;
-    });
+images.forEach((image) => {
+  image.addEventListener("click", () => {
+    modal.style.display = "flex";
+    modalImg.src = image.src;
+    // caption.textContent = image.alt;
+  });
 });
