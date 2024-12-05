@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -150,6 +151,7 @@ body{
     background-color: var(--body-color);
     text-align: justify;
     line-height: var(--line-height-normal);
+    font-family: "Raleway", sans-serif;
 }
 
 img{
@@ -639,7 +641,7 @@ background-image: linear-gradient(to bottom, #fff2f1, #fff0f3, #fceff7, #f7effb,
 
 .footer {
     background-color: var(--bg-secondary-color);
-    color: var(--text-color);
+    /* color: var(--text-color); */
     padding: 2rem 1rem;
     text-align: center;
     height: 22vh;

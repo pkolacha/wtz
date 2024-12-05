@@ -133,6 +133,37 @@ toggleButton.addEventListener("click", () => {
     : "Podświetlanie linków";
 });
 
+
+const imageButton = document.getElementById("hideImage")
+let imagesHidden = false;
+
+imageButton.addEventListener('click', () => {
+const Allimages = document.querySelectorAll('img:not(.slide img):not(.img-container img)');
+const toggleText = document.querySelector('#hideImage .title');
+
+  if (imagesHidden) {
+      Allimages.forEach(img => {
+          img.style.display = 'block';
+      });
+      toggleText.textContent = 'Ukryj Obrazy';
+  } else {
+      Allimages.forEach(img => {
+          img.style.display = 'none';
+      });
+
+      toggleText.textContent = 'Pokaż Obrazy';
+      const sectionTitles = document.querySelectorAll('.section-title');
+      if (sectionTitles.length >= 4) {
+        sectionTitles[3].style.display = 'none';
+      } else {
+        console.log('Nie znaleziono elemntu tytułowego');
+      }
+  }
+
+  imagesHidden = !imagesHidden;
+});
+
+
 const sizeToggler = document.getElementById("fontSizeToggler");
 const textElement = document.querySelectorAll("p");
 const iconSize = document.querySelector(".icon-size");
