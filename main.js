@@ -1,18 +1,3 @@
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//NASYCENIE ZROB, W CSS W ROOT SIE ZNAJDUJA WLASCIWOSCI; UKRYWANIE OBRAZKOW ZROB (zrobione, tylko dodac aby ten div tak nie przeskakiwaol)
-//SPRAWDZ CSS. WYSZUKAJ SE KONTRAST I TAM SA TYTUL KOLORU DO ZMIAN I SECONDARY BG I KOLOR TEKSTU DLA LOW KONTRAST (ZROBIONE)
-
-//W ZMIANIE ROZMIARU TEKSTU 2 RAZY PLUS POTEM RAZ MINUS I ZNOWU 2 RAZY PLUS : <i class="fas fa-minus"></i> . CZAISZE ZE JAK JEST JESZCZE OPCJA DO ZWIEKSZENIA TO PLUS A JAK MOZNA TYLKO ZMINNEJSZYC TO MINUS (jest)
-
-//W PRACOWNI TEZ NIE DZIALA ZMIANA KOLORU TEKSU PRZY ZMIANIE KOTRASTU (zrobione, chyba o to chodzilo)
-
-//NAPRAWIENIE PODSTRON (????????)
-
-//JUTRO TO KONCZYMY (SIGMA)
-
-//JAK MASZ JAKIES PYTANIA TO SMIALO ;)
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 // ladowanie localStorage
 
 window.onload = () => {
@@ -20,7 +5,7 @@ window.onload = () => {
 };
 // zmiania saturation =========
 
-let currentSaturation = localStorage.getItem("saturation") || 100;
+let currentSaturation = document.querySelector("saturation") || 100;
 
 document
   .querySelector("#saturation:nth-child(7)")
@@ -37,7 +22,7 @@ const changeSaturation = () => {
   document.querySelector(
     "#saturation:nth-child(7) > div.icon > i"
   ).innerText = `${currentSaturation}%`;
-  localStorage.setItem("saturation", currentSaturation);
+  document.querySelector("saturation", currentSaturation);
 };
 
 // ============
@@ -104,17 +89,31 @@ const toggler = document.getElementById("contrast-toggler");
 
 const contrastModes = ["default-contrast", "low-contrast", "high-contrast"];
 const colors = {
+  // "default-contrast": {
+  //   bg: "var(--body-color)",
+  //   title: "var(--text-color)",
+  // },
+  // "low-contrast": {
+  //   bg: "var(--bg-reverse-color)",
+  //   title: "var(--text-reverse-color)",
+  // },
+  // "high-contrast": {
+  //   bg: "var(--bg-dark-color)",
+  //   title: "var(--text-dark-color)",
+  // },
+
+  //TAKIE MAJA BYC WARTOSCI
   "default-contrast": {
-    bg: "var(--body-color)",
+    bg: "#d4d5da;",
     title: "var(--text-color)",
   },
   "low-contrast": {
-    bg: "var(--bg-reverse-color)",
-    title: "var(--text-reverse-color)",
+    bg: "#bec0c7",
+    title: "#403535;",
   },
   "high-contrast": {
-    bg: "var(--bg-dark-color)",
-    title: "var(--text-dark-color)",
+    bg: "#eff0f2;",
+    title: "#f3f0f0;",
   },
 };
 let currentContrastIndex = 0;
@@ -128,17 +127,29 @@ const applyContrastMode = (mode) => {
     elements.classList = mode;
   });
 
-  const nav = document.querySelector("body > nav");
-  nav.style.backgroundColor = colors[mode].bg;
-  nav.querySelectorAll("*").forEach((element) => {
-    element.style.color = colors[mode].title;
-  });
+  // const nav = document.querySelector("body > nav");
+  // nav.style.backgroundColor = colors[mode].bg;
+  // nav.querySelectorAll("*").forEach((element) => {
+  //   element.style.color = colors[mode].title;
+  // });
 
+  //NO COS JEST KURWA NIE TAK DEFAULT JEST INNY NIZ WYKLIKANY DEFAULT
   const footer = document.querySelector("body > footer");
   footer.style.backgroundColor = colors[mode].title;
-  footer.querySelectorAll("*").forEach((element) => {
-    element.style.color = colors[mode].bg;
-  });
+
+  //KOLOR TEKSTU SIE NIE ZMIENIA
+  // footer.querySelectorAll("*").forEach((element) => {
+  //   element.style.color = colors[mode].bg;
+  // });
+
+  const about = document.querySelector(".about");
+  about.style.backgroundColor = colors[mode].title;
+  // about.querySelectorAll("*").forEach((element) => {
+  //   element.style.color = colors[mode].bg;
+  // });
+
+  //DODAJ POPUP MA SIE ZACHOWYWAC JAK STRONA (mam na mysli pracownie, specjalistow, i galerie)
+
 
   localStorage.setItem("contrastMode", mode);
 };
@@ -356,5 +367,20 @@ images.forEach((image) => {
     modal.style.display = "flex";
     modalImg.src = image.src;
     // caption.textContent = image.alt;
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const cookiePopup = document.getElementById('cookie-popup');
+  const acceptBtn = document.getElementById('accept-btn');
+
+  if (!localStorage.getItem('cookiesAccepted')) {
+      cookiePopup.style.display = 'block';
+  }
+
+  acceptBtn.addEventListener('click', () => {
+      localStorage.setItem('cookiesAccepted', 'true');
+      cookiePopup.style.display = 'none';
   });
 });
