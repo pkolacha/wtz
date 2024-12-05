@@ -342,7 +342,7 @@ h1, h2, h3, p, div, span{
     overflow: hidden;
     width: 100%;
     height: 93vh;
-    z-index: -1;
+    z-index: 1;
 }
 
 .slides {
@@ -376,14 +376,15 @@ h1, h2, h3, p, div, span{
     color: #fff;
     border: none;
     font-size: 2rem;
-    padding: 10px;
+    padding: 8px 16px;
     cursor: pointer;
-    z-index: 1001;
+    z-index: 1000;
     border-radius: 50%;
 }
 
 .arrow-left {
     left: 20px;
+    z-index: 1000;
 }
 
 .arrow-right {
@@ -395,12 +396,10 @@ h1, h2, h3, p, div, span{
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 0;
-    right: 0;
     width: 350px;
     max-height: 92vh;
     background-color: var(--accessibility-primary);
-    z-index: 1000;
+    z-index: 900;
     transition: left 0.3s ease;
     padding-top: 20px;
     border-radius: 20px 0 0 20px;
@@ -408,6 +407,7 @@ h1, h2, h3, p, div, span{
     right: 0%;
     transform: translate(0%, -50%);
     display: block;
+    overflow-y: auto;
 }
 
 .close-access{
@@ -816,6 +816,208 @@ background-image: linear-gradient(to bottom, #fff2f1, #fff0f3, #fceff7, #f7effb,
 
 
 
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3em;
+    padding: 20px;
+    max-width: 60%;
+    margin: 0 auto 2rem auto;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.caption {
+    color: var(--body-color);
+    text-align: center;
+    margin-top: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: var(--body-color);
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover {
+    color: var(--span-color);
+}
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 69vh;
+}
+
+.contact {
+    display: flex;
+    max-width: 1200px;
+    min-width: 700px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.info-section {
+    flex: 1;
+    padding: 30px;
+    background-image: linear-gradient(to left, #c8defe, #bed5fd, #b5cdfc, #adc4fb);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.info-section h2, .info-section h4{
+    margin-bottom: 1rem;
+}
+
+.info-section p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+.info-section .icon i{
+    font-size: 20px;
+    margin-right: 10px;
+    color: var(--span-color);
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-section {
+    flex: 1;
+    padding: 30px;
+    position: relative;
+}
+
+.form-section h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input, button, textarea {
+    padding: 12px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+input:focus {
+    border-color: var();
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 102, 0, 0.4);
+}
+
+button {
+    background-color: var(--span-color);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 2rem;
+}
+
+button:hover {
+    background-color: #adc4fb;
+}
+
+.lab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 69vh;
+    padding: 20px;
+}
+
+.lab-container {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 1px 4px 24px -10px rgba(0, 0, 0, 1);
+}
+
+.image-lab {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.image-lab img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.text-lab {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.text-lab h2 {
+    margin-bottom: 20px;
+}
+
+.text-lab p {
+    line-height: 1.6;
+}
+
+
 @media (max-width: 768px) {
     .navbar{
         height: 9svh;
@@ -827,7 +1029,7 @@ background-image: linear-gradient(to bottom, #fff2f1, #fff0f3, #fceff7, #f7effb,
         display: flex;
     }
     .access{
-        right: 2rem;
+        right: 2.4rem;
         bottom: 2rem;
     }
     .arrow {
@@ -848,9 +1050,11 @@ background-image: linear-gradient(to bottom, #fff2f1, #fff0f3, #fceff7, #f7effb,
         object-fit: cover; 
         image-rendering: auto;
     }
-    
     .access-menu{
         max-height: 90svh;
+    }
+    .section-title{
+        line-height: 1.1em;
     }
     /* .pracownia{
         flex: 1 1 calc(50% - 10px);
@@ -860,15 +1064,25 @@ background-image: linear-gradient(to bottom, #fff2f1, #fff0f3, #fceff7, #f7effb,
     } */
     .about {
         flex-direction: column;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 2rem 0;
     }
     .about-text {
         flex: 1 1 100%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        font-size: clamp(16px, 4vw, 24px);
+        line-height: 1.5em;
     }
     .about-image {
         flex: 1 1 100%;
     }
     .about-image img{
         height: 30rem;
+        max-width: 100%;
+        height: auto;
     }
     .footer{
         height: auto;
@@ -880,6 +1094,19 @@ background-image: linear-gradient(to bottom, #fff2f1, #fff0f3, #fceff7, #f7effb,
     }
     .footer-contact, .footer-links, .footer-logo {
         flex: 1 1 100%;
+    }
+    .contact {
+        flex-direction: column;
+    }
+    .lab-container {
+        flex-direction: column;
+    }
+    .image-lab, .text-lab {
+        flex: unset;
+        width: 100%;
+    }
+    .image-lab {
+        height: 250px;
     }
 }
 

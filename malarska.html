@@ -49,18 +49,18 @@
         </ul>
     </nav>
 
-    <main>
-        <div class="slider">
-            <div class="slides">
-                <div class="slide slide-1"><img src="./img/pexels-cottonbro-4270221.jpg" alt="" class="slide"></div>
-                <div class="slide slide-2"><img src="./img/pexels-vanessa-loring-7869442.jpg" alt="" class="slide"></div>
+    <div class="lab">
+        <div class="lab-container">
+            <div class="image-lab">
+                <img src="./img/pracownie/malarski.jpg" alt="Pracownia malarska">
             </div>
-            <button class="arrow arrow-left">&lt;</button>
-            <button class="arrow arrow-right">&gt;</button>
+    
+            <div class="text-lab">
+                <h2>Pracownia malarska</h2>
+                <p>Uczestnicy tworzą tu piękne <strong>kartki z życzeniami, obrazy wykonane różnymi metodami plastycznymi np. Quilling czy Decoupage. Poza tym wykonują zapachowe świece oraz mydełka glicerynowe.</strong> Pracownia ta sprzyja rozwijaniu wyobraźni, ekspresji artystycznej i wzmacnianiu poczucia własnej wartości.</p>
+            </div>
         </div>
-    </main>
-
-
+    </div>
     
     <section class="access-menu" style = "display: none">
         <div class="close-access"><i class="fas fa-times"></i></div>
@@ -92,7 +92,7 @@
                 <div class="icon"><i class="fas fa-text-height"></i></div>
                 <div class="title">Wysokość linii</div>
             </div>
-            <div class="access-block">
+            <div class="access-block" id="saturation">
                 <div class="icon"><i class="fas fa-tint"></i></div>
                 <div class="title">Nasycenie</div>
             </div>
@@ -102,8 +102,7 @@
             </div>
 
             <div class="reset">
-                <i class="fas fa-redo"></i>
-                <a href="" title="" class="zresetuj">Zresetuj</a>
+                <a href="" title="" class="zresetuj"><i class="fas fa-redo"></i> Zresetuj</a>
             </div>
         </div>
     </section>
@@ -113,8 +112,9 @@
             <div class="footer-contact">
                 <h3>Kontakt</h3>
                 <ul>
-                    <li><strong>Adres:</strong> Stare Siołkowice 123, 45-678 Opole</li>
-                    <li><strong>Telefon:</strong> <a href="tel:+48123456789">+48 123 456 789</a></li>
+                    <li><strong>Adres:</strong><a href="https://maps.app.goo.gl/aHU4TcWk778ZgDDt5" target="_blank"> ul. Piastowska 28 , 46-083 Stare Siołkowice</a></li>
+                    <li><strong>Telefon:</strong> <a href="tel:+48600478450">+48 600 478 367</a> - WTZ</li>
+                    <li><strong>Telefon:</strong> <a href="tel:+48600478450">+48 600 478 450</a> - Kierownik</li>
                     <li><strong>Email:</strong> <a href="mailto:kontakt@mail.com">kontakt@mail.com</a></li>
                 </ul>
             </div>
@@ -150,6 +150,36 @@
     </div>
     
     
-    <script src="main.js"></script>
+<script src="main.js"></script>
+<script>
+    const rodoLink = document.getElementById("rodo-link");
+    const rodoModal = document.getElementById("rodo-modal");
+    const closeRodoModal = document.getElementById("close-rodo-modal");
+
+    rodoLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        rodoModal.classList.add("active");
+    });
+
+    closeRodoModal.addEventListener("click", () => {
+        rodoModal.classList.remove("active");
+    });
+
+    rodoModal.addEventListener("click", (e) => {
+        if (e.target === rodoModal) {
+            rodoModal.classList.remove("active");
+        }
+    });
+
+    close.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+          modal.style.display = 'none';
+      }
+    });
+</script>
 </body>
 </html>
