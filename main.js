@@ -1,3 +1,9 @@
+// desaturacja(czarno biale)  WARTOSCI
+//     --desaturacja-text: #fff;
+//     --desaturacja-bg: #333;
+//     --desaturacja-img-none: 0%;
+//     --desaturacja-img: grayscale(100%);
+
 // ladowanie localStorage
 
 window.onload = () => {
