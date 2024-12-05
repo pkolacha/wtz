@@ -1,31 +1,46 @@
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //NASYCENIE ZROB, W CSS W ROOT SIE ZNAJDUJA WLASCIWOSCI; UKRYWANIE OBRAZKOW ZROB (zrobione, tylko dodac aby ten div tak nie przeskakiwaol)
-//SPRAWDZ CSS. WYSZUKAJ SE KONTRAST I TAM SA TYTUL KOLORU DO ZMIAN I SECONDARY BG I KOLOR TEKSTU DLA LOW KONTRAST
+//SPRAWDZ CSS. WYSZUKAJ SE KONTRAST I TAM SA TYTUL KOLORU DO ZMIAN I SECONDARY BG I KOLOR TEKSTU DLA LOW KONTRAST (ZROBIONE)
 
-//W ZMIANIE ROZMIARU TEKSTU 2 RAZY PLUS POTEM RAZ MINUS I ZNOWU 2 RAZY PLUS : <i class="fas fa-minus"></i> . CZAISZE ZE JAK JEST JESZCZE OPCJA DO ZWIEKSZENIA TO PLUS A JAK MOZNA TYLKO ZMINNEJSZYC TO MINUS
+//W ZMIANIE ROZMIARU TEKSTU 2 RAZY PLUS POTEM RAZ MINUS I ZNOWU 2 RAZY PLUS : <i class="fas fa-minus"></i> . CZAISZE ZE JAK JEST JESZCZE OPCJA DO ZWIEKSZENIA TO PLUS A JAK MOZNA TYLKO ZMINNEJSZYC TO MINUS (jest)
 
-//W PRACOWNI TEZ NIE DZIALA ZMIANA KOLORU TEKSU PRZY ZMIANIE KOTRASTU
+//W PRACOWNI TEZ NIE DZIALA ZMIANA KOLORU TEKSU PRZY ZMIANIE KOTRASTU (zrobione, chyba o to chodzilo)
 
-//NAPRAWIENIE PODSTRON
+//NAPRAWIENIE PODSTRON (????????)
 
 //JUTRO TO KONCZYMY (SIGMA)
 
 //JAK MASZ JAKIES PYTANIA TO SMIALO ;)
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+// ladowanie localStorage
 
-let currentSaturation = 100; // Początkowe nasycenie w procentach
+window.onload = () => {
+  changeSaturation();
+}
+
+
+// zmiania saturation =========
+
+
+let currentSaturation = localStorage.getItem("saturation") || 100;
+
 document.querySelector("#saturation:nth-child(7)").addEventListener("click", () => {
 
   currentSaturation += 20;
+  changeSaturation();
+});
+
+const changeSaturation = () => {
   if (currentSaturation > 200) {
     currentSaturation = 100;
   }
   document.documentElement.style.filter = `saturate(${currentSaturation}%)`;
   document.querySelector("#saturation:nth-child(7) > div.icon > i").innerText = `${currentSaturation}%`;
-});
+  localStorage.setItem("saturation", currentSaturation);
+};
 
-
+// ============
 
 
 const hamburger = document.querySelector(".hamburger");
@@ -103,6 +118,10 @@ let currentContrastIndex = 0;
 const applyContrastMode = (mode) => {
   contrastModes.forEach((m) => body.classList.remove(m));
   body.classList.add(mode);
+  document.querySelectorAll(".pracownia > h3").forEach((elements) => {
+    elements.classList = mode;
+  });
+  
   localStorage.setItem("contrastMode", mode);
 };
 
@@ -176,6 +195,8 @@ let currentListSizeIndex = 0;
 sizeToggler.addEventListener("click", () => {
   currentFontSizeIndex = (currentFontSizeIndex + 1) % fontSizes.length;
   currentListSizeIndex = (currentListSizeIndex + 1) % listSizes.length;
+
+  (currentFontSizeIndex) % 3 === 2 ? iconSize.innerHTML = '<i class="fas fa-minus"></i>' : iconSize.innerHTML = '<i class="fas fa-plus"></i>';
 
   textElement.forEach((paragraph) => {
     paragraph.style.fontSize = fontSizes[currentFontSizeIndex];
@@ -285,7 +306,6 @@ let slideInterval = setInterval(() => {
 
 function nextSlide() {
   currentIndex = (currentIndex + 1) % slideCount;
-  console.log(`currentIndex: ${currentIndex}`);
   updateSlidePosition();
 }
 
