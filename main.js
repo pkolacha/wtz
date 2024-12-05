@@ -11,7 +11,7 @@ window.onload = () => {
 };
 // zmiania saturation =========
 
-let currentSaturation = document.querySelector("saturation") || 100;
+let currentSaturation = 100;
 
 document
   .querySelector("#saturation:nth-child(7)")
@@ -95,67 +95,56 @@ const toggler = document.getElementById("contrast-toggler");
 
 const contrastModes = ["default-contrast", "low-contrast", "high-contrast"];
 const colors = {
-  // "default-contrast": {
-  //   bg: "var(--body-color)",
-  //   title: "var(--text-color)",
-  // },
-  // "low-contrast": {
-  //   bg: "var(--bg-reverse-color)",
-  //   title: "var(--text-reverse-color)",
-  // },
-  // "high-contrast": {
-  //   bg: "var(--bg-dark-color)",
-  //   title: "var(--text-dark-color)",
-  // },
-
-  //TAKIE MAJA BYC WARTOSCI
   "default-contrast": {
-    bg: "#d4d5da;",
-    title: "var(--text-color)",
+    bg: "#d4d5da",
+    title: "var(--title-color)",
   },
   "low-contrast": {
     bg: "#bec0c7",
-    title: "#403535;",
+    title: "var(--text-reverse-color)",
   },
   "high-contrast": {
-    bg: "#eff0f2;",
-    title: "#f3f0f0;",
+    bg: "#eff0f2",
+    title: "#f3f0f0",
   },
 };
-let currentContrastIndex = 0;
 
+
+const secondaryColors = {
+  "default-contrast": {
+    bg: "#d4d5da",
+    title: "var(--bg-secondary-color)",
+  },
+  "low-contrast": {
+    bg: "#bec0c7",
+    title: "#403535",
+  },
+  "high-contrast": {
+    bg: "#eff0f2",
+    title: "#f3f0f0",
+  },
+}
+
+let currentContrastIndex = 0;
 
 const applyContrastMode = (mode) => {
   contrastModes.forEach((m) => body.classList.remove(m));
   body.classList.add(mode);
+  console.log(contrastModes[currentContrastIndex])
 
-  document.querySelectorAll(".pracownia > h3").forEach((elements) => {
-    elements.classList = mode;
-  });
+  document
+    .querySelectorAll(".pracownia > h3, .pracownie > h2")
+    .forEach((elements) => {
+      console.log(elements);
+      console.log(colors[mode].title);
+      elements.style.color = colors[mode].title;
+    });
 
-  // const nav = document.querySelector("body > nav");
-  // nav.style.backgroundColor = colors[mode].bg;
-  // nav.querySelectorAll("*").forEach((element) => {
-  //   element.style.color = colors[mode].title;
-  // });
 
-  //NO COS JEST KURWA NIE TAK DEFAULT JEST INNY NIZ WYKLIKANY DEFAULT
-  const footer = document.querySelector("body > footer");
-  footer.style.backgroundColor = colors[mode].title;
 
-  //KOLOR TEKSTU SIE NIE ZMIENIA
-  // footer.querySelectorAll("*").forEach((element) => {
-  //   element.style.color = colors[mode].bg;
-  // });
+  const about = document.querySelector("body > section.about");
 
-  const about = document.querySelector(".about");
-  about.style.backgroundColor = colors[mode].title;
-  // about.querySelectorAll("*").forEach((element) => {
-  //   element.style.color = colors[mode].bg;
-  // });
-
-  //DODAJ POPUP MA SIE ZACHOWYWAC JAK STRONA (mam na mysli pracownie, specjalistow, i galerie)
-
+  about.style.backgroundColor = secondaryColors[mode].bg;
 
   localStorage.setItem("contrastMode", mode);
 };
@@ -376,17 +365,16 @@ images.forEach((image) => {
   });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const cookiePopup = document.getElementById("cookie-popup");
+  const acceptBtn = document.getElementById("accept-btn");
 
-document.addEventListener('DOMContentLoaded', () => {
-  const cookiePopup = document.getElementById('cookie-popup');
-  const acceptBtn = document.getElementById('accept-btn');
-
-  if (!localStorage.getItem('cookiesAccepted')) {
-      cookiePopup.style.display = 'block';
+  if (!localStorage.getItem("cookiesAccepted")) {
+    cookiePopup.style.display = "block";
   }
 
-  acceptBtn.addEventListener('click', () => {
-      localStorage.setItem('cookiesAccepted', 'true');
-      cookiePopup.style.display = 'none';
+  acceptBtn.addEventListener("click", () => {
+    localStorage.setItem("cookiesAccepted", "true");
+    cookiePopup.style.display = "none";
   });
 });
