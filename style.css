@@ -374,6 +374,7 @@ h1, h2, h3, p, div, span{
 .slide img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 .arrow {
@@ -1107,7 +1108,7 @@ button:hover{
 
 @media (max-width: 768px){
     .navbar{
-        height: 9svh;
+        min-height: 9svh;
     }
     .navbar-links{
         display: none;
@@ -1127,19 +1128,21 @@ button:hover{
     }
     .slide{
         background-size:cover;
-        background-position: center;
-        position: relative;
-        z-index: 1;
+        background-position: left;
     }
     .slide img{
-        width: 100%;
-        height: 100%;
+        object-position: -3rem;
         object-fit: cover; 
-        image-rendering: auto;
+    }
+    .arrow{
+        top: 50%;
+    }
+    .scroll-down{
+        bottom: 20px;
     }
     .access-menu{
         height: auto;
-        max-height: 80svh;
+        max-height: 90svh;
         width: 80%;
     }
     .section-title{
