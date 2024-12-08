@@ -334,7 +334,7 @@ let currentIndex = 0;
 
 let slideInterval = setInterval(() => {
   nextSlide();
-}, 3000);
+}, 5000);
 
 function nextSlide() {
   currentIndex = (currentIndex + 1) % slideCount;
@@ -387,29 +387,4 @@ document.addEventListener("DOMContentLoaded", () => {
     cookiePopup.style.display = "none";
   });
 });
-
-
-
-  // const scrollButton = document.getElementById('scroll-down');
-
-  // // Obsługa kliknięcia przycisku
-  // scrollButton.addEventListener('click', () => {
-  //   // Płynne przewinięcie w dół
-  //   window.scrollBy({
-  //     top: window.innerHeight, // Przesuwa o wysokość ekranu
-  //     behavior: 'smooth',
-  //   });
-
-  //   // Ukrycie przycisku po kliknięciu
-  //   scrollButton.classList.add('hidden');
-  // });
-
-  // // Opcjonalnie: Pokazywanie lub ukrywanie przycisku w zależności od pozycji przewijania
-  // window.addEventListener('scroll', () => {
-  //   if (window.scrollY > 10) {
-  //     scrollButton.classList.add('hidden');
-  //   } else {
-  //     scrollButton.classList.remove('hidden');
-  //   }
-  // });
 
