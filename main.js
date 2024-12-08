@@ -184,10 +184,12 @@ imageButton.addEventListener("click", () => {
   );
   const toggleText = document.querySelector("#hideImage .title");
   const sectionTitles = document.querySelectorAll(".section-title");
+  const about = document.querySelector(".about-text");
 
   if (imagesHidden) {
     Allimages.forEach((img) => {
       img.style.display = "block";
+      about.style.flex = "1 1 60%";
       if (sectionTitles.length >= 4) {
         sectionTitles[3].style.display = "block";
       } else {
@@ -198,6 +200,7 @@ imageButton.addEventListener("click", () => {
   } else {
     Allimages.forEach((img) => {
       img.style.display = "none";
+      about.style.flex = "1 1 100%";
       if (sectionTitles.length >= 4) {
         sectionTitles[3].style.display = "none";
       } else {
@@ -384,3 +387,29 @@ document.addEventListener("DOMContentLoaded", () => {
     cookiePopup.style.display = "none";
   });
 });
+
+
+
+  // const scrollButton = document.getElementById('scroll-down');
+
+  // // Obsługa kliknięcia przycisku
+  // scrollButton.addEventListener('click', () => {
+  //   // Płynne przewinięcie w dół
+  //   window.scrollBy({
+  //     top: window.innerHeight, // Przesuwa o wysokość ekranu
+  //     behavior: 'smooth',
+  //   });
+
+  //   // Ukrycie przycisku po kliknięciu
+  //   scrollButton.classList.add('hidden');
+  // });
+
+  // // Opcjonalnie: Pokazywanie lub ukrywanie przycisku w zależności od pozycji przewijania
+  // window.addEventListener('scroll', () => {
+  //   if (window.scrollY > 10) {
+  //     scrollButton.classList.add('hidden');
+  //   } else {
+  //     scrollButton.classList.remove('hidden');
+  //   }
+  // });
+
