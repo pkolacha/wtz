@@ -1144,6 +1144,7 @@ button:hover{
         height: auto;
         max-height: 90svh;
         width: 80%;
+        margin-top: 3vh;
     }
     .section-title{
         line-height: 1.1em;
