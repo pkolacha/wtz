@@ -1184,6 +1184,8 @@ button:hover{
     }
     .contact{
         flex-direction: column;
+        max-width: 90vw
+        margin: auto;
     }
     .lab-container{
         flex-direction: column;
