@@ -41,14 +41,14 @@ const mobileLinks = document.querySelectorAll(".navbar-links-mobile a");
 const toggleMenu = (displayMenu, displayIcon) => {
   document.querySelector("body > section.access-menu").style.display =
     displayMenu;
-  document.querySelector("body > a.access > i").style.display = displayIcon;
+  document.querySelector("body > a.access").style.display = displayIcon;
 };
 
 document.querySelector(".fas.fa-times").addEventListener("click", () => {
   toggleMenu("none", "block");
 });
 
-document.querySelector("body > a.access > i").addEventListener("click", () => {
+document.querySelector("body > a.access").addEventListener("click", () => {
   toggleMenu("block", "none");
 });
 

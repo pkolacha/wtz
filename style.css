@@ -1184,8 +1184,14 @@ button:hover{
     }
     .contact{
         flex-direction: column;
-        max-width: 90vw
-        margin: auto;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    }
+    .info-section, .form-section{
+        width: 80vw;
+        margin: 1.3rem auto;
+    }
+    .form-section{
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
     .lab-container{
         flex-direction: column;
